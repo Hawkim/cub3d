@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nal-haki <nal-haki@student.42beirut.com    +#+  +:+       +#+         #
+#    By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/26 22:39:56 by nal-haki          #+#    #+#              #
-#    Updated: 2024/09/26 22:40:21 by nal-haki         ###   ########.fr        #
+#    Updated: 2025/03/06 15:03:32 by nal-haki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS		= -Wall -Wextra -Werror
 AR			= ar -rcs
 RM			= rm -rf
 
-SRCS_PATH = ./src/
+srcsS_PATH = ./src/
 OBJS_PATH = ./libft_objects/
 
 INCLUDES	= ./include/
@@ -35,7 +35,7 @@ SOURCES		= ft_atoi.c ft_bzero.c ft_calloc.c\
 OBJECTS		= $(addprefix $(OBJS_PATH), $(notdir $(SOURCES:.c=.o)))
 
 # Default rule for compiling .c files to .o files in the libft_objects directory
-$(OBJS_PATH)%.o: $(SRCS_PATH)%.c
+$(OBJS_PATH)%.o: $(srcsS_PATH)%.c
 		mkdir -p $(OBJS_PATH)
 		$(CC) $(CFLAGS) -I$(INCLUDES) -c $< -o $@
 

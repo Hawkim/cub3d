@@ -3,16 +3,16 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 # Source files
-SRC = mandatory_src/cub3d.c mandatory_src/get_start.c mandatory_src/hooks.c \
-      mandatory_src/rotate.c mandatory_src/texture_handling.c mandatory_src/wall_checker.c \
-      mandatory_src/player_movement.c mandatory_src/ray_casting.c \
-      mandatory_src/horizontal.c mandatory_src/vertical.c mandatory_src/key_hooks.c \
-      mandatory_src/parsing/general_utils.c mandatory_src/parsing/map_parsing.c \
-      mandatory_src/parsing/parser.c mandatory_src/parsing/parsing_utils.c \
-      mandatory_src/parsing/read_file.c
+srcs = srcs/cub3d.c srcs/get_start.c srcs/hooks.c \
+      srcs/rotate.c srcs/texture_handling.c srcs/wall_checker.c \
+      srcs/player_movement.c srcs/ray_casting.c \
+      srcs/horizontal.c srcs/vertical.c srcs/key_hooks.c \
+      srcs/parsing/general_utils.c srcs/parsing/map_parsing.c \
+      srcs/parsing/parser.c srcs/parsing/parsing_utils.c \
+      srcs/parsing/read_file.c
 
 # Object files
-OBJ = $(SRC:.c=.o)
+OBJ = $(srcs:.c=.o)
 
 # Libraries
 X11 = -lXext -lX11 -lm

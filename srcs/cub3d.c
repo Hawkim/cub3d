@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 19:17:08 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/03/06 15:03:03 by nal-haki         ###   ########.fr       */
+/*   Created: 2024/11/10 14:33:15 by nal-haki          #+#    #+#             */
+/*   Updated: 2024/12/18 19:06:15 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../includes/cub3d.h"
 
-size_t	ft_strlcpy(char *dest, const char *srcs, size_t dstsize)
+int	main(int ac, char **av)
 {
-	size_t	i;
-	size_t	count;
+	t_config	scene_data;
 
-	if (!dest || !srcs)
-		return (0);
-	i = 0;
-	count = 0;
-	while (srcs[count] != '\0')
-		count++;
-	if (dstsize != 0)
-	{
-		while (srcs[i] != '\0' && i < (dstsize - 1))
-		{
-			dest[i] = srcs[i];
-			i++;
-		}
-		dest[i] = '\0';
-	}
-	return (count);
+	if (ac != 2)
+		return (write(2, "Error\nusage : ./cub3d (map_in_format.cub)\n", 42)
+			, 1);
+	file_parser(&scene_data, av[1]);
+	get_start(&scene_data);
 }

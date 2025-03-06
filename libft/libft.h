@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nal-haki <nal-haki@student.42beirut.com    +#+  +:+       +#+        */
+/*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 12:58:32 by nal-haki          #+#    #+#             */
-/*   Updated: 2024/09/26 22:04:39 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/06 15:03:03 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int					ft_isalnum(int c);
 int					ft_isalpha(int c);
 size_t				ft_strlen(const char *str);
 void				ft_bzero(void *s, size_t n);
-void				*ft_memcpy(void *dst, const void *src, size_t n);
+void				*ft_memcpy(void *dst, const void *srcs, size_t n);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
-size_t				ft_strlcpy(char *dst, const char *src, size_t dstsize);
+size_t				ft_strlcpy(char *dst, const char *srcs, size_t dstsize);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strjoin(char const *s1, char const *s2);
