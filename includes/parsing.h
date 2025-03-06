@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:52:30 by nal-haki          #+#    #+#             */
-/*   Updated: 2024/12/21 20:40:31 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/06 13:10:05 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_config
 	char			**map;
 	int				floor_color;
 	int				map_width;
-	int				map_hight;
+	int				map_height;
 	int				ceiling_color;
 	int				player_start_angle;
 }	t_config;

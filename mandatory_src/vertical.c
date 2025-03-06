@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:49:47 by nal-haki          #+#    #+#             */
-/*   Updated: 2024/12/20 10:42:42 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/06 13:10:05 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static bool	check_next_possition(t_data *data, t_ray *ray, int *x, int *y)
 		check_x -= 1;
 	*x = check_x / TILE_SIZE;
 	*y = ray->vertical_y / TILE_SIZE;
-	if ((*y < data->map_hight && *y >= 0)
+	if ((*y < data->map_height && *y >= 0)
 		&& (*x >= 0 && *x < (int)ft_strlen(data->map[*y])))
 	{
 		if (data->map[*y][*x] == ' ')

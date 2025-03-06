@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:52:58 by nal-haki          #+#    #+#             */
-/*   Updated: 2024/12/19 13:05:32 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/06 13:26:05 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	set_hight_width(t_config *scene_data)
 	i = 0;
 	while (scene_data->map[i])
 	{
-		scene_data->map_hight++;
+		scene_data->map_height++;
 		if ((int)ft_strlen(scene_data->map[i]) > scene_data->map_width)
 			scene_data->map_width = ft_strlen(scene_data->map[i]);
 		i++;
@@ -34,16 +34,16 @@ void	check_prev_members(t_config *scene_data, char *line)
 	while (i <= 3)
 	{
 		if (!scene_data->textures_paths[i])
-			error_handler("incomplete elements (a textures path)\n", NULL,
+			error_handler("wrong textures path\n", NULL,
 				line, scene_data);
 		ft_access(scene_data->textures_paths[i], scene_data, line, i);
 		i++;
 	}
 	if (scene_data->ceiling_color == -1)
-		error_handler("incomplete elements (ceiling_color)\n", NULL,
+		error_handler("wrong ceiling_color\n", NULL,
 			line, scene_data);
 	if (scene_data->floor_color == -1)
-		error_handler("incomplete elements (floor_color)\n", NULL,
+		error_handler("wrong floor_color\n", NULL,
 			line, scene_data);
 }
 
@@ -81,6 +81,6 @@ int	open_cub_file(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		error_handler("can't open the provided file\n", NULL, NULL, NULL);
+		error_handler("cannot open the provided file\n", NULL, NULL, NULL);
 	return (fd);
 }

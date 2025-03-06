@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:52:22 by nal-haki          #+#    #+#             */
-/*   Updated: 2024/12/22 13:18:15 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/06 13:10:05 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	data_init(t_config *data)
 		data->textures_paths[i] = NULL;
 		i++;
 	}
-	data->map_hight = 0;
+	data->map_height = 0;
 	data->map_width = 0;
 	data->player_start_angle = -1;
 	data->map = NULL;

@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 18:25:45 by nal-haki          #+#    #+#             */
-/*   Updated: 2024/12/22 13:18:46 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/06 13:10:05 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	setup(t_data *data)
 			&(data->img.bits_per_pixel), &(data->img.line_length),
 			&(data->img.endian));
 	data->width_2d = (data->map_width * TILE_SIZE);
-	data->height_2d = (data->map_hight * TILE_SIZE);
+	data->height_2d = (data->map_height * TILE_SIZE);
 	player_first_coordinates(data);
 	data->player.fov = FOV;
 	data->player.distance_to_project_plan = ((float)WIDTH / 2)
@@ -62,7 +62,7 @@ void	get_start(t_config *parsed_data)
 	data.map = parsed_data->map;
 	data.ceiling_color = parsed_data->ceiling_color;
 	data.floor_color = parsed_data->floor_color;
-	data.map_hight = parsed_data->map_hight;
+	data.map_height = parsed_data->map_height;
 	data.map_width = parsed_data->map_width;
 	data.player.angle = parsed_data->player_start_angle;
 	data.player.angle_step = ((float)(FOV) / (float)WIDTH);

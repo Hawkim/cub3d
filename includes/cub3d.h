@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:03:31 by nal-haki          #+#    #+#             */
-/*   Updated: 2024/12/22 14:13:16 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/06 14:55:28 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "parsing.h"
 # include "../libft/libft.h"
-# include "/home/neilhakim/cub3d/minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx.h"
 # include <unistd.h>
 # include <string.h>
 # include <stdio.h>
@@ -115,7 +115,7 @@ typedef struct s_img
 
 typedef struct s_data
 {
-	int			map_hight;
+	int			map_height;
 	int			map_width;
 	void		*mlx;
 	void		*win;
