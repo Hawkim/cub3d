@@ -25,7 +25,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int	close_win(t_data *data)
 {
-	free_textures_memory(data->mlx, data->wall_textures);
+	free_memory(data->mlx, data->wall_textures);
 	mlx_destroy_image(data->mlx, data->img.img);
 	mlx_destroy_window(data->mlx, data->win);
 	strings_free(data->map);

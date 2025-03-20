@@ -154,7 +154,7 @@ typedef struct s_draw_line
 	int	color;
 }	t_draw_line;
 
-void	free_textures_memory(void *mlx, t_texture *my_textures);
+void	free_memory(void *mlx, t_texture *my_textures);
 void	get_start(t_config *parsed_data);
 void	init_key_flags(t_data *data);
 int		ft_key_press(int key, t_data *data);

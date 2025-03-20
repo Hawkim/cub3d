@@ -19,7 +19,7 @@ void	ft_access(char *file, t_config *scene_data, char *line, int i)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{
-		write(2, "Error\ncan't access \"", 20);
+		write(2, "Error\ncan't access\"", 20);
 		ft_putstr_fd(scene_data->textures_paths[i], 2);
 		write(2, "\"\n", 2);
 		free_parsed_data(scene_data);

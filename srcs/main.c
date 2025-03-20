@@ -17,7 +17,7 @@ int	main(int ac, char **av)
 	t_config	scene_data;
 
 	if (ac != 2)
-	return (write(2, "Wrong arguments!\n", 18)
+	return (write(2, "Wrong arguments!\n", 17)
 			, 1);
 	file_parser(&scene_data, av[1]);
 	get_start(&scene_data);

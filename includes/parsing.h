@@ -37,7 +37,7 @@ typedef struct s_config
 	int				player_start_angle;
 }	t_config;
 
-void		set_hight_width(t_config *scene_data);
+void		set_height_width(t_config *scene_data);
 char		*read_line(int fd);
 void		file_parser(t_config *scene, char *scene_descrption);
 void		data_init(t_config *data);

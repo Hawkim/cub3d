@@ -136,5 +136,5 @@ void	file_parser(t_config *scene_data, char *scene_description_file)
 	check_prev_members(scene_data, line);
 	scene_data->map = map_alloc(line, fd, scene_data);
 	map_parser(scene_data->map, scene_data);
-	set_hight_width(scene_data);
+	set_height_width(scene_data);
 }

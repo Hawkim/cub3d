@@ -12,7 +12,7 @@
 
 #include "../../includes/parsing.h"
 
-void	set_hight_width(t_config *scene_data)
+void	set_height_width(t_config *scene_data)
 {
 	int	i;
 

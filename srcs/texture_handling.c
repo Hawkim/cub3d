@@ -12,7 +12,7 @@
 
 #include "../includes/cub3d.h"
 
-void	free_textures_memory(void *mlx, t_texture *my_textures)
+void	free_memory(void *mlx, t_texture *my_textures)
 {
 	int	i;
 
