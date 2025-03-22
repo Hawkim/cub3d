@@ -12,7 +12,7 @@
 
 #include "../includes/cub3d.h"
 
-static float	calculate_delta_x(t_data *data, float *vertical_x
+static float	calculate_delta_x(t_maindata *data, float *vertical_x
 							, float *vertical_y, float rayangle)
 {
 	float	delta_x;
@@ -42,7 +42,7 @@ static float	calculate_delta_x(t_data *data, float *vertical_x
 	return (delta_x);
 }
 
-static void	find_vertical_point(t_data *data, float rayangle
+static void	find_vertical_point(t_maindata *data, float rayangle
 				, float *vertical_x, float *vertical_y)
 {
 	float	delta_x;
@@ -56,7 +56,7 @@ static void	find_vertical_point(t_data *data, float rayangle
 	*vertical_y = *vertical_y - delta_y;
 }
 
-static bool	check_next_possition(t_data *data, t_ray *ray, int *x, int *y)
+static bool	check_next_position(t_maindata *data, t_ray *ray, int *x, int *y)
 {
 	float	check_x;
 
@@ -80,22 +80,22 @@ static bool	check_next_possition(t_data *data, t_ray *ray, int *x, int *y)
 	return (false);
 }
 
-void	vertical_distance(t_data *data, t_ray *ray, float rayangle)
+void	vert_distance(t_maindata *data, t_ray *ray, float rayangle)
 {
 	int		x;
 	int		y;
 
 	ray->vertical_y = data->player.player_y;
 	ray->vertical_x = data->player.player_x;
-	ray->vertical_distance = -1.0;
+	ray->vert_distance = -1.0;
 	while (1)
 	{
 		find_vertical_point(data, rayangle, &ray->vertical_x, &ray->vertical_y);
-		if (check_next_possition(data, ray, &x, &y))
+		if (check_next_position(data, ray, &x, &y))
 			break ;
 		if (data->map[y][x] == '1')
 		{
-			ray->vertical_distance = get_distance(data, ray->vertical_x,
+			ray->vert_distance = get_distance(data, ray->vertical_x,
 					ray->vertical_y);
 			break ;
 		}

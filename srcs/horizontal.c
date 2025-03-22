@@ -12,24 +12,24 @@
 
 #include "../includes/cub3d.h"
 
-float	get_distance(t_data *data, float x, float y)
+float	get_distance(t_maindata *data, float x, float y)
 {
 	return (sqrt(pow((data->player.player_x - x), 2)
 			+ pow((data->player.player_y - y), 2)));
 }
 
-static float	calculate_delta_y(t_data *data, float *horizontal_x
-							, float *horizontal_y, float rayangle)
+static float	calculate_delta_y(t_maindata *data, float *horiz_x
+							, float *horiz_y, float rayangle)
 {
 	float	delta_y;
 
 	if (rayangle > 180)
 	{
-		if (*horizontal_x == data->player.player_x
-			&& *horizontal_y == data->player.player_y)
+		if (*horiz_x == data->player.player_x
+			&& *horiz_y == data->player.player_y)
 		{
-			delta_y = *horizontal_y
-				- (((int)(*horizontal_y / TILE_SIZE)) * (TILE_SIZE));
+			delta_y = *horiz_y
+				- (((int)(*horiz_y / TILE_SIZE)) * (TILE_SIZE));
 			if (delta_y == 0)
 				delta_y = TILE_SIZE;
 		}
@@ -38,42 +38,42 @@ static float	calculate_delta_y(t_data *data, float *horizontal_x
 	}
 	else
 	{
-		if (*horizontal_x == data->player.player_x
-			&& *horizontal_y == data->player.player_y)
-			delta_y = (*horizontal_y)
-				- (((int)((*horizontal_y) / TILE_SIZE) + 1) * TILE_SIZE);
+		if (*horiz_x == data->player.player_x
+			&& *horiz_y == data->player.player_y)
+			delta_y = (*horiz_y)
+				- (((int)((*horiz_y) / TILE_SIZE) + 1) * TILE_SIZE);
 		else
 			delta_y = -TILE_SIZE;
 	}
 	return (delta_y);
 }
 
-static void	find_horizontal_point(t_data *data, float rayangle
-					, float *horizontal_x, float *horizontal_y)
+static void	find_horizontal_point(t_maindata *data, float rayangle
+					, float *horiz_x, float *horiz_y)
 {
 	float	delta_x;
 	float	delta_y;
 
 	if (rayangle == 0 || rayangle == 180)
 		return ;
-	delta_y = calculate_delta_y(data, horizontal_x, horizontal_y, rayangle);
+	delta_y = calculate_delta_y(data, horiz_x, horiz_y, rayangle);
 	delta_x = delta_y / tan(radian(rayangle));
-	*horizontal_x = *horizontal_x - delta_x;
-	*horizontal_y = *horizontal_y - delta_y;
+	*horiz_x = *horiz_x - delta_x;
+	*horiz_y = *horiz_y - delta_y;
 }
 
-static bool	check_next_possition(t_data *data, t_ray *ray, int *x, int *y)
+static bool	check_next_position(t_maindata *data, t_ray *ray, int *x, int *y)
 {
 	float	check_y;
 
 	if (ray->rayangle == 0 || ray->rayangle == 180
-		|| ray->horizontal_y > data->height_2d || ray->horizontal_y < 0
-		|| ray->horizontal_x > data->width_2d || ray->horizontal_x < 0)
+		|| ray->horiz_y > data->height_2d || ray->horiz_y < 0
+		|| ray->horiz_x > data->width_2d || ray->horiz_x < 0)
 		return (true);
-	check_y = ray->horizontal_y;
-	if (ray->horizontal_y < data->player.player_y)
+	check_y = ray->horiz_y;
+	if (ray->horiz_y < data->player.player_y)
 		check_y -= 1;
-	*x = ray->horizontal_x / TILE_SIZE;
+	*x = ray->horiz_x / TILE_SIZE;
 	*y = check_y / TILE_SIZE;
 	if ((*y < data->map_height && *y >= 0) && (*x >= 0
 			&& *x < (int)ft_strlen(data->map[*y])))
@@ -86,24 +86,24 @@ static bool	check_next_possition(t_data *data, t_ray *ray, int *x, int *y)
 	return (false);
 }
 
-void	horizontal_distance(t_data *data, t_ray *ray, float rayangle)
+void	horiz_distance(t_maindata *data, t_ray *ray, float rayangle)
 {
 	int		x;
 	int		y;
 
-	ray->horizontal_y = data->player.player_y;
-	ray->horizontal_x = data->player.player_x;
-	ray->horizontal_distance = -1.0;
+	ray->horiz_y = data->player.player_y;
+	ray->horiz_x = data->player.player_x;
+	ray->horiz_distance = -1.0;
 	while (1)
 	{
-		find_horizontal_point(data, rayangle, &ray->horizontal_x,
-			&ray->horizontal_y);
-		if (check_next_possition(data, ray, &x, &y))
+		find_horizontal_point(data, rayangle, &ray->horiz_x,
+			&ray->horiz_y);
+		if (check_next_position(data, ray, &x, &y))
 			break ;
 		if (data->map[y][x] == '1')
 		{
-			ray->horizontal_distance = get_distance(data, ray->horizontal_x,
-					ray->horizontal_y);
+			ray->horiz_distance = get_distance(data, ray->horiz_x,
+					ray->horiz_y);
 			break ;
 		}
 	}

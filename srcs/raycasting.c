@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_casting.c                                      :+:      :+:    :+:   */
+/*   raycasting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "../includes/cub3d.h"
 
-static void	height_and_texture(t_data *data, t_ray *ray)
+static void	height_and_texture(t_maindata *data, t_ray *ray)
 {
 	if (ray->side_flag == 1)
 	{
@@ -33,7 +33,7 @@ static void	height_and_texture(t_data *data, t_ray *ray)
 		* data->player.distance_to_project_plan;
 }
 
-static void	draw_column(t_data *data, t_ray *ray, int column)
+static void	draw_column(t_maindata *data, t_ray *ray, int column)
 {
 	int	start;
 	int	end;
@@ -46,54 +46,54 @@ static void	draw_column(t_data *data, t_ray *ray, int column)
 		end = HEIGHT;
 	i = -1;
 	while (++i < start)
-		my_mlx_pixel_put(data, column, i, data->ceiling_color);
+		mlx_add_pixel(data, column, i, data->ceiling_color);
 	i = -1;
 	if (start > 0)
 		i = start - 1;
 	while (++i < end)
 	{
 		get_texture_color(data, ray, i - start);
-		my_mlx_pixel_put(data, column, i, ray->curr_color);
+		mlx_add_pixel(data, column, i, ray->curr_color);
 	}
 	while (i < HEIGHT)
-		my_mlx_pixel_put(data, column, i++, data->floor_color);
+		mlx_add_pixel(data, column, i++, data->floor_color);
 }
 
-static void	real_distance(t_ray *ray, t_data *data)
+static void	real_distance(t_ray *ray, t_maindata *data)
 {
-	if (ray->horizontal_distance != -1)
-		ray->horizontal_distance = cos(radian(ray->rayangle
-					- data->player.angle)) * ray->horizontal_distance;
-	if (ray->vertical_distance != -1)
-		ray->vertical_distance = cos(radian(ray->rayangle - data->player.angle))
-			* ray->vertical_distance;
+	if (ray->horiz_distance != -1)
+		ray->horiz_distance = cos(radian(ray->rayangle
+					- data->player.angle)) * ray->horiz_distance;
+	if (ray->vert_distance != -1)
+		ray->vert_distance = cos(radian(ray->rayangle - data->player.angle))
+			* ray->vert_distance;
 }
 
 static void	small_distance(t_ray *ray)
 {
-	if (ray->horizontal_distance == -1)
+	if (ray->horiz_distance == -1)
 	{
 		ray->side_flag = 2;
-		ray->distance = ray->vertical_distance;
+		ray->distance = ray->vert_distance;
 	}
-	else if (ray->vertical_distance == -1)
+	else if (ray->vert_distance == -1)
 	{
 		ray->side_flag = 1;
-		ray->distance = ray->horizontal_distance;
+		ray->distance = ray->horiz_distance;
 	}
-	else if (ray->vertical_distance <= ray->horizontal_distance)
+	else if (ray->vert_distance <= ray->horiz_distance)
 	{
 		ray->side_flag = 2;
-		ray->distance = ray->vertical_distance;
+		ray->distance = ray->vert_distance;
 	}
-	else if (ray->horizontal_distance < ray->vertical_distance)
+	else if (ray->horiz_distance < ray->vert_distance)
 	{
 		ray->side_flag = 1;
-		ray->distance = ray->horizontal_distance;
+		ray->distance = ray->horiz_distance;
 	}
 }
 
-void	ray_casting(t_data *data)
+void	raycasting(t_maindata *data)
 {
 	t_ray	ray;
 	int		column;
@@ -104,8 +104,8 @@ void	ray_casting(t_data *data)
 		ray.rayangle += 360;
 	while (column <= WIDTH)
 	{
-		horizontal_distance(data, &ray, ray.rayangle);
-		vertical_distance(data, &ray, ray.rayangle);
+		horiz_distance(data, &ray, ray.rayangle);
+		vert_distance(data, &ray, ray.rayangle);
 		real_distance(&ray, data);
 		small_distance(&ray);
 		draw_column(data, &ray, column);

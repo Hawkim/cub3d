@@ -12,7 +12,7 @@
 
 #include "../includes/cub3d.h"
 
-static void	player_first_coordinates(t_data *data)
+static void	player_first_coordinates(t_maindata *data)
 {
 	int	x;
 	int	y;
@@ -33,7 +33,7 @@ static void	player_first_coordinates(t_data *data)
 	}
 }
 
-static void	setup(t_data *data)
+static void	setup(t_maindata *data)
 {
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "cub3d");
@@ -49,15 +49,15 @@ static void	setup(t_data *data)
 		/ tan(radian(data->player.fov / 2));
 }
 
-static void	first_view(t_data *data)
+static void	first_view(t_maindata *data)
 {
-	ray_casting(data);
+	raycasting(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 }
 
 void	get_start(t_config *parsed_data)
 {
-	t_data	data;
+	t_maindata	data;
 
 	data.map = parsed_data->map;
 	data.ceiling_color = parsed_data->ceiling_color;
@@ -70,11 +70,11 @@ void	get_start(t_config *parsed_data)
 	initialize_textures(&data, parsed_data);
 	parsed_data->map = NULL;
 	free_parsed_data(parsed_data);
-	init_key_flags(&data);
+	intitialize_keyflags(&data);
 	first_view(&data);
-	mlx_hook(data.win, 17, 1L << 2, close_win, &data);
-	mlx_hook(data.win, 2, 1L << 0, ft_key_press, &data);
-	mlx_hook(data.win, 3, 1L << 1, ft_key_release, &data);
+	mlx_hook(data.win, 17, 1L << 2, close_window, &data);
+	mlx_hook(data.win, 2, 1L << 0, ft_press_key, &data);
+	mlx_hook(data.win, 3, 1L << 1, ft_release_key, &data);
 	mlx_loop_hook(data.mlx, loop_rendering, &data);
 	mlx_loop(data.mlx);
 }

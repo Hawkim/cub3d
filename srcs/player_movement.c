@@ -12,7 +12,7 @@
 
 #include "../includes/cub3d.h"
 
-static void	w_moves(t_data *data)
+static void	w_moves(t_maindata *data)
 {
 	float	delta_x;
 	float	delta_y;
@@ -35,7 +35,7 @@ static void	w_moves(t_data *data)
 	}
 }
 
-static void	s_moves(t_data *data)
+static void	s_moves(t_maindata *data)
 {
 	float	delta_x;
 	float	delta_y;
@@ -58,7 +58,7 @@ static void	s_moves(t_data *data)
 	}
 }
 
-static void	d_moves(t_data *data)
+static void	d_moves(t_maindata *data)
 {
 	float	delta_x;
 	float	delta_y;
@@ -81,7 +81,7 @@ static void	d_moves(t_data *data)
 	}
 }
 
-static void	a_moves(t_data *data)
+static void	a_moves(t_maindata *data)
 {
 	float	delta_x;
 	float	delta_y;
@@ -104,7 +104,7 @@ static void	a_moves(t_data *data)
 	}
 }
 
-void	move_player(t_data *data)
+void	ft_moveplayer(t_maindata *data)
 {
 	if (!data->keys[W_FLAG] && !data->keys[S_FLAG] && !data->keys[D_FLAG]
 		&& !data->keys[A_FLAG])

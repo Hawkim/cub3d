@@ -12,7 +12,7 @@
 
 #include "../includes/cub3d.h"
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	mlx_add_pixel(t_maindata *data, int x, int y, int color)
 {
 	char	*dst;
 
@@ -23,7 +23,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	close_win(t_data *data)
+int	close_window(t_maindata *data)
 {
 	free_memory(data->mlx, data->wall_textures);
 	mlx_destroy_image(data->mlx, data->img.img);
@@ -34,7 +34,7 @@ int	close_win(t_data *data)
 	exit(0);
 }
 
-static bool	check_keys(t_data *data)
+static bool	check_keys(t_maindata *data)
 {
 	if (!data->keys[ROTATE_FLAG]
 		&& !data->keys[MOVE_FLAG]
@@ -43,15 +43,15 @@ static bool	check_keys(t_data *data)
 	return (true);
 }
 
-int	loop_rendering(t_data *data)
+int	loop_rendering(t_maindata *data)
 {
 	if (data->keys[CLOSE_FLAG])
-		close_win(data);
+		close_window(data);
 	rotate(data);
-	move_player(data);
+	ft_moveplayer(data);
 	if (!check_keys(data))
 		return (0);
-	ray_casting(data);
+	raycasting(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 	data->keys[ROTATE_FLAG] = 0;
 	data->keys[MOVE_FLAG] = 0;

@@ -12,7 +12,7 @@
 
 #include "../includes/cub3d.h"
 
-void	init_key_flags(t_data *data)
+void	intitialize_keyflags(t_maindata *data)
 {
 	data->keys[RIGHT_FLAG] = false;
 	data->keys[LEFT_FLAG] = false;
@@ -25,7 +25,7 @@ void	init_key_flags(t_data *data)
 	data->keys[MOVE_FLAG] = false;
 }
 
-int	ft_key_press(int key, t_data *data)
+int	ft_press_key(int key, t_maindata *data)
 {
 	if (key == RIGHT)
 		data->keys[RIGHT_FLAG] = true;
@@ -44,7 +44,7 @@ int	ft_key_press(int key, t_data *data)
 	return (false);
 }
 
-int	ft_key_release(int key, t_data *data)
+int	ft_release_key(int key, t_maindata *data)
 {
 	if (key == RIGHT)
 		data->keys[RIGHT_FLAG] = false;

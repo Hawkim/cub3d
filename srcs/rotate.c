@@ -17,7 +17,7 @@ float	radian(float degree)
 	return (degree * M_PI / 180);
 }
 
-void	rotate(t_data *data)
+void	rotate(t_maindata *data)
 {
 	if (!data->keys[RIGHT_FLAG] && !data->keys[LEFT_FLAG])
 		return ;

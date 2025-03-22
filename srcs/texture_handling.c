@@ -32,7 +32,7 @@ static int	get_cords_color(t_texture *img, int x, int y)
 	return (*(int *)dst);
 }
 
-void	initialize_textures(t_data *data, t_config *parsed_data)
+void	initialize_textures(t_maindata *data, t_config *parsed_data)
 {
 	int	i;
 
@@ -41,7 +41,7 @@ void	initialize_textures(t_data *data, t_config *parsed_data)
 	{
 		data->wall_textures[i].img = mlx_xpm_file_to_image(data->mlx,
 				parsed_data->textures_paths[i], &data->wall_textures[i].width,
-				&data->wall_textures[i].hight);
+				&data->wall_textures[i].height);
 		data->wall_textures[i].iter = mlx_get_data_addr
 			(data->wall_textures[i].img, &data->wall_textures[i].pixel_bits,
 				&data->wall_textures[i].line_length,
@@ -50,7 +50,7 @@ void	initialize_textures(t_data *data, t_config *parsed_data)
 	}
 }
 
-void	get_texture_color(t_data *data, t_ray *ray, int current_y)
+void	get_texture_color(t_maindata *data, t_ray *ray, int current_y)
 {
 	float	x_scale;
 	float	y_scale;
@@ -58,11 +58,11 @@ void	get_texture_color(t_data *data, t_ray *ray, int current_y)
 
 	current_x = 0;
 	x_scale = (float)data->wall_textures[ray->texture_idx].width / TILE_SIZE;
-	y_scale = (float)data->wall_textures[ray->texture_idx].hight / ray->height;
+	y_scale = (float)data->wall_textures[ray->texture_idx].height / ray->height;
 	if (ray->texture_idx == N_INDEX)
-		current_x = (int)ray->horizontal_x % TILE_SIZE;
+		current_x = (int)ray->horiz_x % TILE_SIZE;
 	else if (ray->texture_idx == S_INDEX)
-		current_x = TILE_SIZE - ((int)ray->horizontal_x % TILE_SIZE);
+		current_x = TILE_SIZE - ((int)ray->horiz_x % TILE_SIZE);
 	else if (ray->texture_idx == E_INDEX)
 		current_x = (int)ray->vertical_y % TILE_SIZE;
 	else if (ray->texture_idx == W_INDEX)

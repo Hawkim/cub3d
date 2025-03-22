@@ -5,7 +5,7 @@ CFLAGS = -Wall -Wextra -Werror
 # Source files
 srcs = srcs/main.c srcs/get_start.c srcs/hooks.c \
       srcs/rotate.c srcs/texture_handling.c srcs/wall_checker.c \
-      srcs/player_movement.c srcs/ray_casting.c \
+      srcs/player_movement.c srcs/raycasting.c \
       srcs/horizontal.c srcs/vertical.c srcs/key_hooks.c \
       srcs/parsing/general_utils.c srcs/parsing/map_parsing.c \
       srcs/parsing/parser.c srcs/parsing/parsing_utils.c \
@@ -17,7 +17,7 @@ OBJ = $(srcs:.c=.o)
 # Libraries
 X11 = -lXext -lX11 -lm
 LIBFT = libft/libft.a
-# MLX = minilibx-linux/libmlx_Linux.a
+MLX = minilibx-linux/libmlx_Linux.a
 
 # Rules
 $(NAME): libmlx libft $(OBJ)
@@ -39,7 +39,7 @@ all: $(NAME)
 clean:
 	rm -f $(OBJ)
 	@$(MAKE) -C libft clean
-# @$(MAKE) -C minilibx-linux clean
+	@$(MAKE) -C minilibx-linux clean
 
 fclean: clean
 	rm -f $(NAME)

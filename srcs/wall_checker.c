@@ -12,12 +12,12 @@
 
 #include "../includes/cub3d.h"
 
-static bool	wall_char(t_data *data, int y, int x)
+static bool	wall_char(t_maindata *data, int y, int x)
 {
 	return (data->map[y][x] == '1');
 }
 
-static bool	check_corners(t_data *data, int index_x, int index_y, int px)
+static bool	check_corners(t_maindata *data, int index_x, int index_y, int px)
 {
 	int	py;
 
@@ -46,7 +46,7 @@ static bool	check_corners(t_data *data, int index_x, int index_y, int px)
 	return (false);
 }
 
-bool	check_barriers(t_data *data, float x, float y)
+bool	check_barriers(t_maindata *data, float x, float y)
 {
 	float	new_x;
 	float	new_y;
