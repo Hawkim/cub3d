@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parsing.h"
+#include "../includes/parsing.h"
 
 void	ft_access(char *file, t_config *scene_data, char *line, int i)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nal-haki <nal-haki@student.42beirut.com    +#+  +:+       +#+        */
+/*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 14:26:35 by nal-haki          #+#    #+#             */
-/*   Updated: 2024/09/26 22:04:39 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/23 12:46:12 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,3 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)&s[i]);
 	return (NULL);
 }
-
-/*
-{
-	int		i;
-
-	i = 0;
-	while (s[i] && c != s[i])
-		s++;
-	if (c == *s)
-		return ((char *)s);
-	return (0);
-}
-*/

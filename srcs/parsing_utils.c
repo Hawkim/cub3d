@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   general_utils.c                                    :+:      :+:    :+:   */
+/*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:52:22 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/03/06 13:10:05 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/24 02:22:32 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parsing.h"
+#include "../includes/parsing.h"
 
 void	free_parsed_data(t_config *data)
 {
@@ -73,8 +73,10 @@ void	error_handler(char *err, char **free_me, char *me_too, t_config *data)
 	if (free_me)
 		strings_free(free_me);
 	free(me_too);
-	write(2, "Error\n", 6);
-	if (err)
+	write(2, "Error: ", 7);
+	if (err){
 		write(2, err, ft_strlen(err));
+		write(2, "\n", 1);
+	}
 	exit (1);
 }

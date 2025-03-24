@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_parsing.c                                      :+:      :+:    :+:   */
+/*   parsemap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:44:23 by nal-haki          #+#    #+#             */
-/*   Updated: 2024/12/19 13:05:24 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/24 02:22:58 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parsing.h"
+#include "../includes/parsing.h"
 
 char	**map_alloc(char *line, int fd, t_config *scene_data)
 {
@@ -118,5 +118,5 @@ void	map_parser(char **map, t_config *scene_data)
 		}
 	}
 	if (scene_data->player_start_angle == -1)
-		error_handler("player not found in the map\n", NULL, NULL, scene_data);
+		error_handler("player not found in the map", NULL, NULL, scene_data);
 }

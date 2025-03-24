@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_utils.c                                    :+:      :+:    :+:   */
+/*   parsing_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:52:58 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/03/06 13:26:05 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/24 02:24:22 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parsing.h"
+#include "../includes/parsing.h"
 
 void	set_height_width(t_config *scene_data)
 {
@@ -34,16 +34,16 @@ void	check_prev_members(t_config *scene_data, char *line)
 	while (i <= 3)
 	{
 		if (!scene_data->textures_paths[i])
-			error_handler("wrong textures path\n", NULL,
+			error_handler("wrong textures path", NULL,
 				line, scene_data);
 		ft_access(scene_data->textures_paths[i], scene_data, line, i);
 		i++;
 	}
 	if (scene_data->ceiling_color == -1)
-		error_handler("wrong ceiling_color\n", NULL,
+		error_handler("wrong ceiling color", NULL,
 			line, scene_data);
 	if (scene_data->floor_color == -1)
-		error_handler("wrong floor_color\n", NULL,
+		error_handler("wrong floor color", NULL,
 			line, scene_data);
 }
 
@@ -81,6 +81,6 @@ int	open_cub_file(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		error_handler("cannot open the provided file\n", NULL, NULL, NULL);
+		error_handler("cannot open the provided file", NULL, NULL, NULL);
 	return (fd);
 }

@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:24:00 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/03/06 13:10:05 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/23 16:30:30 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,16 @@ static bool	wall_char(t_maindata *data, int y, int x)
 	return (data->map[y][x] == '1');
 }
 
-static bool	check_corners(t_maindata *data, int index_x, int index_y, int px)
+static bool	check_corners(t_maindata *data, int index_x, int index_y)
 {
 	int	py;
+	int px;
 
 	px = (data->player.player_x / TILE_SIZE);
 	py = (data->player.player_y / TILE_SIZE);
 	if (px > index_x && py > index_y)
 	{
-		if (wall_char(data, py, (px - 1)) && wall_char(data, py, (px - 1)))
+		if (wall_char(data, py, (px - 1)))
 			return (true);
 	}
 	else if (px < index_x && py < index_y)
@@ -65,5 +66,5 @@ bool	check_barriers(t_maindata *data, float x, float y)
 		return (1);
 	if (!ft_strchr("NSEW0", data->map[(int)index_y][(int)index_x]))
 		return (1);
-	return (check_corners(data, (int)index_x, (int)index_y, 0));
+	return (check_corners(data, (int)index_x, (int)index_y));
 }

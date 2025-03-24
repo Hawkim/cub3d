@@ -2,10 +2,10 @@ NO ./textures/brick_walls/brickwall1.xpm
 SO ./textures/brick_walls/brickwall2.xpm
 WE ./textures/brick_walls/brickwall3.xpm
 EA ./textures/brick_walls/brickwall4.xpm
-F 220,100,0
-C 225,30,0
+F 255,255,255
+C 0,0,0
 111111
 100001
 100001
-1000N1
+10N001
 111111

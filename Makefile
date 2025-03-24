@@ -7,9 +7,9 @@ srcs = srcs/main.c srcs/get_start.c srcs/hooks.c \
       srcs/rotate.c srcs/texture_handling.c srcs/wall_checker.c \
       srcs/player_movement.c srcs/raycasting.c \
       srcs/horizontal.c srcs/vertical.c srcs/key_hooks.c \
-      srcs/parsing/general_utils.c srcs/parsing/map_parsing.c \
-      srcs/parsing/parser.c srcs/parsing/parsing_utils.c \
-      srcs/parsing/read_file.c
+      srcs/parsing_utils.c srcs/parsemap.c \
+      srcs/parse.c srcs/parsing_utils2.c \
+      srcs/read_file.c
 
 # Object files
 OBJ = $(srcs:.c=.o)
