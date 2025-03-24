@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:52:22 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/03/24 02:22:32 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/25 00:42:00 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ void	error_handler(char *err, char **free_me, char *me_too, t_config *data)
 		strings_free(free_me);
 	free(me_too);
 	write(2, "Error: ", 7);
-	if (err){
+	if (err)
+	{
 		write(2, err, ft_strlen(err));
 		write(2, "\n", 1);
 	}

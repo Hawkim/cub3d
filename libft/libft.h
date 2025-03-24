@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 12:58:32 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/03/06 15:03:03 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/25 00:01:06 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ int					if_eof(char *str);
 void				ft_putstr_fd(char *str, int fd);
 void				ft_putchar_fd(char c, int fd);
 int					ft_cap_num(char *str);
-char	            *ft_strtrim(char const *s1, char const *set);
+char				*ft_strtrim(char const *s1, char const *set);
 
 #endif

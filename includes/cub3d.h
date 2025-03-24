@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:03:31 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/03/06 14:55:28 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/25 00:33:12 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 # include <math.h>
 # include <stdbool.h>
 
-# define TILE_SIZE 1000         // Size of each tile in the map (used for scaling).
-# define MIN_TILE_SIZE 10       // Minimum size of a tile (used for scaling or constraints).
-# define WIDTH 1080             // Width of the game window in pixels.
+# define TILE_SIZE 1000 // Size of each tile in the map (used for scaling).
+# define MIN_TILE_SIZE 10 // Min size of a tile.
+# define WIDTH 1080       // Width of the game window in pixels.
 # define HEIGHT 720             // Height of the game window in pixels.
 
 # define W 119                  //  for the 'W' key (move forward).
@@ -41,29 +41,29 @@
 # define IMG_SIZE_X 4           // Width of texture images 
 # define IMG_SIZE_Y 4           // Height of texture images 
 
-# define ANGLE 1.5              // Angle increment for player rotation (in degrees).
+# define ANGLE 1.5  // Angle increment for player rotation (in degrees).
 # define WALL_COLOR 0x61F5B5    // Color for rendering walls (in hexadecimal).
-# define DIR_COLOR 0xFF0000     // Color for rendering the player's direction (red).
-# define BLACK 0x000000         // Color for rendering black (used for background or empty space).
+# define DIR_COLOR 0xFF0000     // Color for rendering the player's direction 
+# define BLACK 0x000000         // Color for rendering black 
 
-# define FOV 60                 // Field of View (angle in degrees visible to the player).
-# define SPEED_DIVISOR 10 		// Divisor for player movement  (controls how fast the player moves).
+# define FOV 60  // Field of View (angle in degrees visible to the player).
+# define SPEED_DIVISOR 10	 //controls how fast the player moves).
 
 # define N_INDEX 0              // Index for the north wall texture.
 # define S_INDEX 1              // Index for the south wall texture.
 # define W_INDEX 2              // Index for the west wall texture.
 # define E_INDEX 3              // Index for the east wall texture.
 
-# define RIGHT_FLAG 0           // Flag for right arrow key (rotate right).
-# define LEFT_FLAG 1            // Flag for left arrow key (rotate left).
+# define RIGHT_ARROW 0           // Flag for right arrow key (rotate right).
+# define LEFT_ARROW 1            // Flag for left arrow key (rotate left).
 # define W_FLAG 2               // Flag for 'W' key (move forward).
 # define S_FLAG 3               // Flag for 'S' key (move backward).
 # define D_FLAG 4               // Flag for 'D' key (move right).
 # define A_FLAG 5               // Flag for 'A' key (move left).
 # define CLOSE_FLAG 6           // Flag for 'Esc' key (close the game).
-# define ROTATE_FLAG 7          // Flag for rotation actions (combined rotation logic).
-# define MOVE_FLAG 8            // Flag for movement actions (combined movement logic).
-# define KEYS_NB 9              // Total number of key flags (used for array sizing).
+# define ROTATE_FLAG 7 // Flag for rotation actions (combined rotation logic).
+# define MOVE_FLAG 8    // Flag for movement actions (combined movement logic).
+# define KEYS_NB 9      // Total number of key flags (used for array sizing).
 
 typedef struct s_texture
 {
@@ -136,7 +136,7 @@ typedef struct s_maindata
 
 void	free_memory(void *mlx, t_texture *my_textures);
 void	get_start(t_config *parsed_data);
-void	intitialize_keyflags(t_maindata *data);
+void	intitialize_keys(t_maindata *data);
 int		ft_press_key(int key, t_maindata *data);
 int		ft_release_key(int key, t_maindata *data);
 int		loop_rendering(t_maindata *data);

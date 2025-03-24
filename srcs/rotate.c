@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:49:07 by nal-haki          #+#    #+#             */
-/*   Updated: 2024/12/19 13:51:57 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/24 18:31:06 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ float	radian(float degree)
 
 void	rotate(t_maindata *data)
 {
-	if (!data->keys[RIGHT_FLAG] && !data->keys[LEFT_FLAG])
+	if (!data->keys[RIGHT_ARROW] && !data->keys[LEFT_ARROW])
 		return ;
-	if (data->keys[RIGHT_FLAG])
+	if (data->keys[RIGHT_ARROW])
 	{
 		data->player.angle += ANGLE;
 		if (data->player.angle >= 360)
 			data->player.angle -= 360;
 	}
-	if (data->keys[LEFT_FLAG])
+	if (data->keys[LEFT_ARROW])
 	{
 		data->player.angle -= ANGLE;
 		if (data->player.angle < 0)

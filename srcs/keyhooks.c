@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_hooks.c                                        :+:      :+:    :+:   */
+/*   hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 10:38:14 by nal-haki          #+#    #+#             */
-/*   Updated: 2024/12/19 13:50:42 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/24 18:33:29 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	intitialize_keyflags(t_maindata *data)
+void	intitialize_keys(t_maindata *data)
 {
-	data->keys[RIGHT_FLAG] = false;
-	data->keys[LEFT_FLAG] = false;
+	data->keys[RIGHT_ARROW] = false;
+	data->keys[LEFT_ARROW] = false;
 	data->keys[W_FLAG] = false;
 	data->keys[S_FLAG] = false;
 	data->keys[D_FLAG] = false;
@@ -28,9 +28,9 @@ void	intitialize_keyflags(t_maindata *data)
 int	ft_press_key(int key, t_maindata *data)
 {
 	if (key == RIGHT)
-		data->keys[RIGHT_FLAG] = true;
+		data->keys[RIGHT_ARROW] = true;
 	if (key == LEFT)
-		data->keys[LEFT_FLAG] = true;
+		data->keys[LEFT_ARROW] = true;
 	if (key == W)
 		data->keys[W_FLAG] = true;
 	if (key == S)
@@ -47,9 +47,9 @@ int	ft_press_key(int key, t_maindata *data)
 int	ft_release_key(int key, t_maindata *data)
 {
 	if (key == RIGHT)
-		data->keys[RIGHT_FLAG] = false;
+		data->keys[RIGHT_ARROW] = false;
 	if (key == LEFT)
-		data->keys[LEFT_FLAG] = false;
+		data->keys[LEFT_ARROW] = false;
 	if (key == W)
 		data->keys[W_FLAG] = false;
 	if (key == S)

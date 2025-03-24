@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:24:00 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/03/23 16:30:30 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/25 00:59:59 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,33 +17,24 @@ static bool	wall_char(t_maindata *data, int y, int x)
 	return (data->map[y][x] == '1');
 }
 
-static bool	check_corners(t_maindata *data, int index_x, int index_y)
-{
+static	bool	check_corners(t_maindata *d, int ix, int iy)
+	{
+	int	px;
 	int	py;
-	int px;
 
-	px = (data->player.player_x / TILE_SIZE);
-	py = (data->player.player_y / TILE_SIZE);
-	if (px > index_x && py > index_y)
-	{
-		if (wall_char(data, py, (px - 1)))
-			return (true);
-	}
-	else if (px < index_x && py < index_y)
-	{
-		if (wall_char(data, py, (px + 1)) && wall_char(data, (py + 1), px))
-			return (true);
-	}
-	else if (px > index_x && py < index_y)
-	{
-		if (wall_char(data, py, (px - 1)) && wall_char(data, (py + 1), px))
-			return (true);
-	}
-	else if (px < index_x && py > index_y)
-	{
-		if (wall_char(data, py, (px + 1)) && wall_char(data, (py - 1), px))
-			return (true);
-	}
+	px = d->player.player_x / TILE_SIZE;
+	py = d->player.player_y / TILE_SIZE;
+	if (px > ix && py > iy && wall_char(d, py, px - 1))
+		return (true);
+	if (px < ix && py < iy && wall_char(d, py, px + 1)
+		&& wall_char(d, py + 1, px))
+		return (true);
+	if (px > ix && py < iy && wall_char(d, py, px - 1)
+		&& wall_char(d, py + 1, px))
+		return (true);
+	if (px < ix && py > iy && wall_char(d, py, px + 1)
+		&& wall_char(d, py - 1, px))
+		return (true);
 	return (false);
 }
 

@@ -6,13 +6,13 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 18:25:45 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/03/24 00:33:06 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/24 22:54:11 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static void	player_initial_position(t_maindata *data)
+static void	player_first_coordinates(t_maindata *data)
 {
 	int	x;
 	int	y;
@@ -43,7 +43,7 @@ static void	setup(t_maindata *data)
 			&(data->img.endian));
 	data->width_2d = (data->map_width * TILE_SIZE);
 	data->height_2d = (data->map_height * TILE_SIZE);
-	player_initial_position(data);
+	player_first_coordinates(data);
 	data->player.fov = FOV;
 	data->player.distance_to_project_plan = ((float)WIDTH / 2)
 		/ tan(radian(data->player.fov / 2));
@@ -70,7 +70,7 @@ void	get_start(t_config *parsed_data)
 	initialize_textures(&data, parsed_data);
 	parsed_data->map = NULL;
 	free_parsed_data(parsed_data);
-	intitialize_keyflags(&data);
+	intitialize_keys(&data);
 	first_view(&data);
 	mlx_hook(data.win, 17, 1L << 2, close_window, &data);
 	mlx_hook(data.win, 2, 1L << 0, ft_press_key, &data);
