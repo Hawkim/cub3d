@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:03:31 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/03/25 00:33:12 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/26 23:48:32 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@
 # include <math.h>
 # include <stdbool.h>
 
-# define TILE_SIZE 1000 // Size of each tile in the map (used for scaling).
-# define MIN_TILE_SIZE 10 // Min size of a tile.
+# define BLOCK_SIZE 1000 // Size of each tile in the map (used for scaling).
 # define WIDTH 1080       // Width of the game window in pixels.
 # define HEIGHT 720             // Height of the game window in pixels.
 
@@ -34,11 +33,9 @@
 # define D 100                  //  for the 'D' key (move right).
 # define RIGHT 65363            //  for the right arrow key (rotate right).
 # define LEFT 65361             //  for the left arrow key (rotate left).
-# define UP 65362               //  for the up arrow key (unused).
-# define DOWN 65364             //  for the down arrow key (unused ).
 # define CLOSE 65307            //  for the 'Esc' key (close the game).
 
-# define IMG_SIZE_X 4           // Width of texture images 
+# define IMG_SIZE_X 14         // Width of texture images 
 # define IMG_SIZE_Y 4           // Height of texture images 
 
 # define ANGLE 1.5  // Angle increment for player rotation (in degrees).
@@ -135,7 +132,7 @@ typedef struct s_maindata
 }	t_maindata;
 
 void	free_memory(void *mlx, t_texture *my_textures);
-void	get_start(t_config *parsed_data);
+void	start(t_config *parsed_data);
 void	intitialize_keys(t_maindata *data);
 int		ft_press_key(int key, t_maindata *data);
 int		ft_release_key(int key, t_maindata *data);
@@ -153,4 +150,5 @@ void	vert_distance(t_maindata *data, t_ray *ray, float rayangle);
 void	get_texture_color(t_maindata *data, t_ray *ray, int current_y);
 void	initialize_textures(t_maindata *data, t_config *parsed_data);
 bool	check_barriers(t_maindata *data, float x, float y);
+bool	wall_char(t_maindata *data, int y, int x);
 #endif

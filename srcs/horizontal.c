@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:47:36 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/03/06 13:10:05 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/26 22:36:36 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,21 @@ static float	calculate_delta_y(t_maindata *data, float *horiz_x
 			&& *horiz_y == data->player.player_y)
 		{
 			delta_y = *horiz_y
-				- (((int)(*horiz_y / TILE_SIZE)) * (TILE_SIZE));
+				- (((int)(*horiz_y / BLOCK_SIZE)) * (BLOCK_SIZE));
 			if (delta_y == 0)
-				delta_y = TILE_SIZE;
+				delta_y = BLOCK_SIZE;
 		}
 		else
-			delta_y = TILE_SIZE;
+			delta_y = BLOCK_SIZE;
 	}
 	else
 	{
 		if (*horiz_x == data->player.player_x
 			&& *horiz_y == data->player.player_y)
 			delta_y = (*horiz_y)
-				- (((int)((*horiz_y) / TILE_SIZE) + 1) * TILE_SIZE);
+				- (((int)((*horiz_y) / BLOCK_SIZE) + 1) * BLOCK_SIZE);
 		else
-			delta_y = -TILE_SIZE;
+			delta_y = -BLOCK_SIZE;
 	}
 	return (delta_y);
 }
@@ -73,8 +73,8 @@ static bool	check_next_position(t_maindata *data, t_ray *ray, int *x, int *y)
 	check_y = ray->horiz_y;
 	if (ray->horiz_y < data->player.player_y)
 		check_y -= 1;
-	*x = ray->horiz_x / TILE_SIZE;
-	*y = check_y / TILE_SIZE;
+	*x = ray->horiz_x / BLOCK_SIZE;
+	*y = check_y / BLOCK_SIZE;
 	if ((*y < data->map_height && *y >= 0) && (*x >= 0
 			&& *x < (int)ft_strlen(data->map[*y])))
 	{

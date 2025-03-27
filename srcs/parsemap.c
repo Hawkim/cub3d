@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:44:23 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/03/24 02:22:58 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/26 21:09:21 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ char	**map_alloc(char *line, int fd, t_config *scene_data)
 		line = ft_strjoin(line, new_line);
 		if (!line)
 			return (free(new_line), error_handler
-				("insufficient memory\n", NULL, tmp, scene_data), NULL);
+				("no memory", NULL, tmp, scene_data), NULL);
 		free(tmp);
 		free(new_line);
 		new_line = read_line(fd);
 	}
 	res = ft_split(line, '\n');
 	if (!res)
-		error_handler("insufficient memory\n", NULL, line, scene_data);
+		error_handler("no memory", NULL, line, scene_data);
 	return (free(line), res);
 }
 
@@ -58,7 +58,7 @@ void	player_space_border_check(t_config *scene_data, int y, int x, char c)
 		&& !ft_strchr(set, map[y + 1][x]))
 		flag = 1;
 	if (flag)
-		error_handler("map isn't surrounded by walls", NULL,
+		error_handler("map is not fully surrounded by walls", NULL,
 			NULL, scene_data);
 }
 
@@ -66,7 +66,7 @@ void	set_player_angle(t_config *scene_data, char player_char, int y,
 	int x)
 {
 	if (scene_data->player_start_angle != -1)
-		error_handler("duplicate player character in the map",
+		error_handler("too many players in map",
 			NULL, NULL, scene_data);
 	if (player_char == 'N')
 		scene_data->player_start_angle = N_ANGLE;
@@ -82,13 +82,13 @@ void	set_player_angle(t_config *scene_data, char player_char, int y,
 void	map_pars_helper(char **map, int y, int x, t_config *scene_data)
 {
 	if (!ft_strchr(" 01NSWE", map[y][x]))
-		error_handler("use of invalid character in the map\n", NULL,
+		error_handler("use of invalid character in the map", NULL,
 			NULL, scene_data);
 	if (ft_strchr("SNWE", map[y][x]))
 		set_player_angle(scene_data, map[y][x], y, x);
 	if (map[y][x] == '0' && ((int)ft_strlen(map[y - 1]) <= x
 		|| (int)ft_strlen(map[y + 1]) <= x))
-		error_handler("map isn't surrounded by walls",
+		error_handler("map is not fully surrounded by walls",
 			NULL, NULL, scene_data);
 	if (map[y][x] == ' ')
 		player_space_border_check(scene_data, y, x, ' ');
@@ -104,19 +104,19 @@ void	map_parser(char **map, t_config *scene_data)
 	{
 		x = -1;
 		if ((y == 0 || !map[y + 1]) && top_bottom_check(map[y]))
-			error_handler("map isn't surrounded by walls",
+			error_handler("map is not fully surrounded by walls",
 				NULL, NULL, scene_data);
 		while (map[y][++x])
 		{
 			if ((x == 0 || x == (int)ft_strlen(map[y]) - 1)
 				&& !ft_strchr(" 1", map[y][x]))
-				error_handler("map isn't surrounded by walls", NULL, NULL,
-					scene_data);
+				error_handler("map is not fully surrounded by walls",
+					NULL, NULL, scene_data);
 			map_pars_helper(map, y, x, scene_data);
 			if (x > scene_data->map_width)
 				scene_data->map_width = x + 1;
 		}
 	}
 	if (scene_data->player_start_angle == -1)
-		error_handler("player not found in the map", NULL, NULL, scene_data);
+		error_handler("no player found", NULL, NULL, scene_data);
 }

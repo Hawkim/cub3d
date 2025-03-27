@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:53:05 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/03/24 14:20:41 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/26 17:54:15 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*append_char(char *str, char c)
 	len = ft_strlen(str);
 	res = malloc(sizeof(char) * (len + 2));
 	if (!res)
-		error_handler("insufficient memory\n", NULL, str, NULL);
+		error_handler("no memory", NULL, str, NULL);
 	while (i < len)
 	{
 		res[i] = str[i];

@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:49:47 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/03/25 01:07:00 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/26 22:36:36 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,21 @@ static float	calculate_delta_x(t_maindata *data, float *xvert,
 	float	remainder;
 	bool	at_player;
 
-	tx = (int)(*xvert / TILE_SIZE);
+	tx = (int)(*xvert / BLOCK_SIZE);
 	at_player = (*xvert == data->player.player_x
 			&& *yvert == data->player.player_y);
 	if (angle > 90 && angle < 270)
 	{
 		if (at_player == false)
-			return (TILE_SIZE);
-		remainder = fmod(*xvert, TILE_SIZE);
+			return (BLOCK_SIZE);
+		remainder = fmod(*xvert, BLOCK_SIZE);
 		if (remainder == 0)
-			return (TILE_SIZE);
+			return (BLOCK_SIZE);
 		return (remainder);
 	}
 	if (at_player == false)
-		return (-TILE_SIZE);
-	return (*xvert - ((tx + 1) * TILE_SIZE));
+		return (-BLOCK_SIZE);
+	return (*xvert - ((tx + 1) * BLOCK_SIZE));
 }
 
 static void	find_vertical_point(t_maindata *data, float rayangle,
@@ -61,8 +61,8 @@ static bool	check_next_position(t_maindata *data, t_ray *ray, int *x, int *y)
 	check_x = ray->vertical_x;
 	if (ray->vertical_x < data->player.player_x)
 		check_x -= 1;
-	*x = check_x / TILE_SIZE;
-	*y = ray->vertical_y / TILE_SIZE;
+	*x = check_x / BLOCK_SIZE;
+	*y = ray->vertical_y / BLOCK_SIZE;
 	if (*y < 0 || *y >= data->map_height
 		|| *x < 0 || *x >= (int)ft_strlen(data->map[*y]))
 		return (true);

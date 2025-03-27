@@ -29,7 +29,7 @@ static void	height_and_texture(t_maindata *data, t_ray *ray)
 		else
 			ray->texture_idx = E_INDEX;
 	}
-	ray->height = ((float)TILE_SIZE / ray->distance)
+	ray->height = ((float)BLOCK_SIZE / ray->distance)
 		* data->player.distance_to_project_plan;
 }
 

@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:49:46 by nal-haki          #+#    #+#             */
-/*   Updated: 2024/12/19 14:39:29 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/26 22:36:36 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	w_moves(t_maindata *data)
 
 	if (data->keys[W_FLAG])
 	{
-		speed = (float)TILE_SIZE / SPEED_DIVISOR;
+		speed = (float)BLOCK_SIZE / SPEED_DIVISOR;
 		delta_x = (cos(radian(data->player.angle)) * speed);
 		delta_y = (sin(radian(data->player.angle)) * speed);
 		if (delta_x < 0.00001 && delta_x > -0.00001)
@@ -43,7 +43,7 @@ static void	s_moves(t_maindata *data)
 
 	if (data->keys[S_FLAG])
 	{
-		speed = (float)TILE_SIZE / SPEED_DIVISOR;
+		speed = (float)BLOCK_SIZE / SPEED_DIVISOR;
 		delta_x = (cos(radian(data->player.angle)) * speed) * -1;
 		delta_y = (sin(radian(data->player.angle)) * speed) * -1;
 		if (delta_x < 0.00001 && delta_x > -0.00001)
@@ -66,7 +66,7 @@ static void	d_moves(t_maindata *data)
 
 	if (data->keys[D_FLAG])
 	{
-		speed = (float)TILE_SIZE / SPEED_DIVISOR;
+		speed = (float)BLOCK_SIZE / SPEED_DIVISOR;
 		delta_x = (sin(radian(data->player.angle)) * speed) * -1;
 		delta_y = (cos(radian(data->player.angle)) * speed);
 		if (delta_x < 0.00001 && delta_x > -0.00001)
@@ -89,7 +89,7 @@ static void	a_moves(t_maindata *data)
 
 	if (data->keys[A_FLAG])
 	{
-		speed = (float)TILE_SIZE / SPEED_DIVISOR;
+		speed = (float)BLOCK_SIZE / SPEED_DIVISOR;
 		delta_x = (sin(radian(data->player.angle)) * speed);
 		delta_y = (cos(radian(data->player.angle)) * speed) * -1;
 		if (delta_x < 0.00001 && delta_x > -0.00001)

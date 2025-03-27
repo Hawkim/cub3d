@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 10:01:07 by nal-haki          #+#    #+#             */
-/*   Updated: 2024/12/19 15:13:52 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/26 22:36:36 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,16 +57,16 @@ void	get_texture_color(t_maindata *data, t_ray *ray, int current_y)
 	int		current_x;
 
 	current_x = 0;
-	x_scale = (float)data->wall_textures[ray->texture_idx].width / TILE_SIZE;
+	x_scale = (float)data->wall_textures[ray->texture_idx].width / BLOCK_SIZE;
 	y_scale = (float)data->wall_textures[ray->texture_idx].height / ray->height;
 	if (ray->texture_idx == N_INDEX)
-		current_x = (int)ray->horiz_x % TILE_SIZE;
+		current_x = (int)ray->horiz_x % BLOCK_SIZE;
 	else if (ray->texture_idx == S_INDEX)
-		current_x = TILE_SIZE - ((int)ray->horiz_x % TILE_SIZE);
+		current_x = BLOCK_SIZE - ((int)ray->horiz_x % BLOCK_SIZE);
 	else if (ray->texture_idx == E_INDEX)
-		current_x = (int)ray->vertical_y % TILE_SIZE;
+		current_x = (int)ray->vertical_y % BLOCK_SIZE;
 	else if (ray->texture_idx == W_INDEX)
-		current_x = TILE_SIZE - ((int)ray->vertical_y % TILE_SIZE);
+		current_x = BLOCK_SIZE - ((int)ray->vertical_y % BLOCK_SIZE);
 	ray->curr_color = get_cords_color(&data->wall_textures[ray->texture_idx],
 			current_x * x_scale, current_y * y_scale);
 }
