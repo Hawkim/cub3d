@@ -6,11 +6,11 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:52:22 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/03/25 00:42:00 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/29 14:43:17 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/parsing.h"
+#include "../includes/cub3d.h"
 
 void	free_parsed_data(t_config *data)
 {

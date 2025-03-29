@@ -6,11 +6,11 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:53:05 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/03/26 17:54:15 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/29 14:43:17 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/parsing.h"
+#include "../includes/cub3d.h"
 
 void	ft_access(char *file, t_config *scene_data, char *line, int i)
 {

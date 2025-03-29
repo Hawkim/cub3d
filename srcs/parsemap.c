@@ -6,11 +6,11 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:44:23 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/03/26 21:09:21 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/29 14:43:17 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/parsing.h"
+#include "../includes/cub3d.h"
 
 char	**map_alloc(char *line, int fd, t_config *scene_data)
 {

@@ -6,11 +6,11 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:52:51 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/03/27 01:20:27 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/29 14:43:17 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/parsing.h"
+#include "../includes/cub3d.h"
 
 static int	check_color_format(char *str)
 {
