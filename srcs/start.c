@@ -41,13 +41,13 @@ static void	initialsetup(t_maindata *data)
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "cub3d");
 	data->img.img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	data->img.addr = mlx_get_data_addr(data->img.img,
-			&(data->img.bits_per_pixel), &(data->img.line_length),
+			&(data->img.bits_per_pixel), &(data->img.length),
 			&(data->img.endian));
 	data->width_2d = (data->map_width * BLOCK_SIZE);
 	data->height_2d = (data->map_height * BLOCK_SIZE);
 	player_initial_xy(data);
 	data->player.fov = FOV;
-	data->player.distance_to_project_plan = ((float)WIDTH / 2)
+	data->player.projection_plane_dist = ((float)WIDTH / 2)
 		/ tan(radian(data->player.fov / 2));
 }
 

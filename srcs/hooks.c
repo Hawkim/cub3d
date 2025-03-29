@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 13:35:28 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/03/26 17:27:26 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/29 16:13:38 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	mlx_add_pixel(t_maindata *data, int x, int y, int color)
 
 	if (x <= 0 || x >= WIDTH || y <= 0 || y >= HEIGHT)
 		return ;
-	dst = data->img.addr + (y * data->img.line_length + x
+	dst = data->img.addr + (y * data->img.length + x
 			* (data->img.bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }

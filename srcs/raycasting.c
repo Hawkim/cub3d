@@ -30,7 +30,7 @@ static void	height_and_texture(t_maindata *data, t_ray *ray)
 			ray->texture_idx = E_INDEX;
 	}
 	ray->height = ((float)BLOCK_SIZE / ray->distance)
-		* data->player.distance_to_project_plan;
+		* data->player.projection_plane_dist;
 }
 
 static void	draw_column(t_maindata *data, t_ray *ray, int column)
@@ -53,7 +53,7 @@ static void	draw_column(t_maindata *data, t_ray *ray, int column)
 	while (++i < end)
 	{
 		get_texture_color(data, ray, i - start);
-		mlx_add_pixel(data, column, i, ray->curr_color);
+		mlx_add_pixel(data, column, i, ray->pixel_color);
 	}
 	while (i < HEIGHT)
 		mlx_add_pixel(data, column, i++, data->floor_color);

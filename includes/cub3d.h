@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:03:31 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/03/29 14:47:21 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/03/29 17:42:29 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@
 # define IMG_SIZE_X 14 // Width of texture images
 # define IMG_SIZE_Y 4  // Height of texture images
 
-# define ANGLE 1.5          
-	// Angle increment for player rotation (in degrees).
+# define ANGLE 1.5
+// Angle increment for player rotation (in degrees).
 # define WALL_COLOR 0x61F5B5 // Color for rendering walls (in hexadecimal).
 # define DIR_COLOR 0xFF0000  // Color for rendering the player's direction
 # define BLACK 0x000000      // Color for rendering black
 
-# define FOV 60          
-	// Field of View (angle in degrees visible to the player).
+# define FOV 60
+// Field of View (angle in degrees visible to the player).
 # define SPEED_DIV 10 // controls how fast the player moves).
 
 # define N_INDEX 0 // Index for the north wall texture.
@@ -72,28 +72,26 @@
 typedef struct s_texture
 {
 	void		*img;
-	char		*iter;
-	int			line_length;
-	int			pixel_bits;
-	int			endianess;
+	char		*pixel_buffer;
+	int			length;
 	int			width;
 	int			height;
+	int			pixel_bits;
+	int			endianness;
 }				t_texture;
 
 typedef struct s_ray
 {
-	float		colums;
 	float		distance;
 	float		rayangle;
-	float		raystep;
 	float		horiz_x;
 	float		horiz_y;
 	float		horiz_distance;
-	float		vertical_x;
-	float		vertical_y;
+	float		vert_x;
+	float		vert_y;
 	float		vert_distance;
 	int			side_flag;
-	int			curr_color;
+	int			pixel_color;
 	int			texture_idx;
 	float		height;
 }				t_ray;
@@ -105,7 +103,7 @@ typedef struct s_player
 	float		angle;
 	float		fov;
 	float		angle_step;
-	float		distance_to_project_plan;
+	float		projection_plane_dist;
 	float		first_x_fov;
 	float		last_x_fov;
 	float		first_y_fov;
@@ -117,7 +115,7 @@ typedef struct s_img
 	void		*img;
 	char		*addr;
 	int			bits_per_pixel;
-	int			line_length;
+	int			length;
 	int			endian;
 }				t_img;
 
@@ -152,6 +150,14 @@ typedef struct s_config
 void			free_memory(void *mlx, t_texture *my_textures);
 void			start(t_config *parsed_data);
 void			intitialize_keys(t_maindata *data);
+void			draw(t_maindata *data);
+void			horiz_distance(t_maindata *data, t_ray *ray, float rayangle);
+float			get_distance(t_maindata *data, float x, float y);
+void			vert_distance(t_maindata *data, t_ray *ray, float rayangle);
+void			get_texture_color(t_maindata *data, t_ray *ray, int current_y);
+void			initialize_textures(t_maindata *data, t_config *parsed_data);
+bool			check_barriers(t_maindata *data, float x, float y);
+bool			wall_char(t_maindata *data, int y, int x);
 int				ft_press_key(int key, t_maindata *data);
 int				ft_release_key(int key, t_maindata *data);
 int				loop_rendering(t_maindata *data);
@@ -161,15 +167,7 @@ float			radian(float degree);
 void			rotate(t_maindata *data);
 void			ft_moveplayer(t_maindata *data);
 void			raycasting(t_maindata *data);
-void			draw(t_maindata *data);
-void			horiz_distance(t_maindata *data, t_ray *ray, float rayangle);
-float			get_distance(t_maindata *data, float x, float y);
-void			vert_distance(t_maindata *data, t_ray *ray, float rayangle);
-void			get_texture_color(t_maindata *data, t_ray *ray, int current_y);
-void			initialize_textures(t_maindata *data, t_config *parsed_data);
-bool			check_barriers(t_maindata *data, float x, float y);
-bool			wall_char(t_maindata *data, int y, int x);
-//parsing
+// parsing
 void			set_height_width(t_config *scene_data);
 char			*read_line(int fd);
 void			file_parser(t_config *scene, char *scene_descrption);
