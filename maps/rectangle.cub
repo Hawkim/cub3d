@@ -1,7 +1,7 @@
-NO ./textures/colors/blue.xpm
-SO ./textures/colors/red.xpm
-WE ./textures/colors/green.xpm
-EA ./textures/colors/purple.xpm
+NO ./graphics/colors/blue.xpm
+SO ./graphics/colors/red.xpm
+WE ./graphics/colors/green.xpm
+EA ./graphics/colors/purple.xpm
 
 F 100,100,250
 C 0,0,0
