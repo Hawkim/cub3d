@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:52:51 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/03/29 14:43:17 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/04/01 17:17:20 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	parse_color(t_config *data, char *line, int is_floor)
 	if (is_floor)
 		color_ptr = (char *)&data->floor_color;
 	if (*color_ptr != -1)
-		error_handler("duplicate type element", NULL, line, data);
+		error_handler("duplicate element", NULL, line, data);
 	rgb = ft_split(line + 1, ',');
 	if (strings_len(rgb) != 3)
 		error_handler("floor and ceiling must be in R,G,B format",
@@ -75,7 +75,7 @@ static void	store_texture(char **words, t_config *data, char *line)
 	if (idx < 4)
 	{
 		if (data->textures_paths[idx])
-			error_handler("duplicate type element", words, line, data);
+			error_handler("duplicate element", words, line, data);
 		data->textures_paths[idx] = ft_strtrim(words[1], "\n");
 		return ;
 	}

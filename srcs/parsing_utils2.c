@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:52:58 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/03/29 14:43:17 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/04/01 17:49:42 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,14 @@ void	check_prev_members(t_config *scene_data, char *line)
 	while (i <= 3)
 	{
 		if (!scene_data->textures_paths[i])
-			error_handler("wrong textures path", NULL,
-				line, scene_data);
+			error_handler("wrong textures path", NULL, line, scene_data);
 		ft_access(scene_data->textures_paths[i], scene_data, line, i);
 		i++;
 	}
 	if (scene_data->ceiling_color == -1)
-		error_handler("wrong ceiling color", NULL,
-			line, scene_data);
+		error_handler("wrong ceiling color", NULL, line, scene_data);
 	if (scene_data->floor_color == -1)
-		error_handler("wrong floor color", NULL,
-			line, scene_data);
+		error_handler("wrong floor color", NULL, line, scene_data);
 }
 
 int	is_map_line(char *str)
@@ -77,7 +74,12 @@ int	top_bottom_check(char *str)
 
 int	open_cub_file(char *file)
 {
-	int		fd;
+	int 	fd;
+	size_t 	len;
+
+	len = ft_strlen(file);
+	if (len < 4 || ft_strncmp(file + len - 4, ".cub", 4) != 0)
+		error_handler("file must have .cub extension", NULL, NULL, NULL);
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)

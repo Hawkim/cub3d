@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 # Source files
 srcs = srcs/main.c srcs/start.c srcs/hooks.c \
-      srcs/rotate.c srcs/texture_handling.c srcs/wall_checker.c \
+      srcs/rotation.c srcs/handle_texture.c srcs/wall_checker.c \
       srcs/player_movement.c srcs/raycasting.c \
       srcs/horizontal.c srcs/vertical.c srcs/keyhooks.c \
       srcs/parsing_utils.c srcs/parsemap.c \
