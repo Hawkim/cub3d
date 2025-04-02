@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/29 17:33:03 by nal-haki          #+#    #+#             */
+/*   Created: 2025/02/29 17:33:03 by nal-haki          #+#    #+#             */
 /*   Updated: 2025/03/06 13:29:35 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -17,17 +17,17 @@ static void	height_and_texture(t_maindata *data, t_ray *ray)
 	if (ray->side_flag == 1)
 	{
 		if (ray->rayangle >= 180)
-			ray->texture_idx = S_INDEX;
+			ray->texture_index = SOUTH_INDEX;
 		else
-			ray->texture_idx = N_INDEX;
+			ray->texture_index = NORTH_INDEX;
 	}
 	else
 	{
 		if ((ray->rayangle >= 0 && ray->rayangle <= 90)
 			|| ray->rayangle >= 270)
-			ray->texture_idx = W_INDEX;
+			ray->texture_index = WEST_INDEX;
 		else
-			ray->texture_idx = E_INDEX;
+			ray->texture_index = EAST_INDEX;
 	}
 	ray->height = ((float)BLOCK_SIZE / ray->distance)
 		* data->player.projection_plane_dist;

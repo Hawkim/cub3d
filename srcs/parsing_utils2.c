@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 14:52:58 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/04/01 17:49:42 by nal-haki         ###   ########.fr       */
+/*   Created: 2025/02/06 14:52:58 by nal-haki          #+#    #+#             */
+/*   Updated: 2025/04/02 17:20:16 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,12 @@ int	top_bottom_check(char *str)
 
 int	open_cub_file(char *file)
 {
-	int 	fd;
-	size_t 	len;
+	int		fd;
+	size_t	len;
 
 	len = ft_strlen(file);
 	if (len < 4 || ft_strncmp(file + len - 4, ".cub", 4) != 0)
 		error_handler("file must have .cub extension", NULL, NULL, NULL);
-
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		error_handler("cannot open the provided file", NULL, NULL, NULL);

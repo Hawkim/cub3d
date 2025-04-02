@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 17:03:31 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/03/29 17:42:29 by nal-haki         ###   ########.fr       */
+/*   Created: 2025/02/16 17:03:31 by nal-haki          #+#    #+#             */
+/*   Updated: 2025/04/02 18:36:42 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@
 # define WIDTH 1080      // Width of the game window in pixels.
 # define HEIGHT 720      // Height of the game window in pixels.
 # define W 119           //  for the 'W' key (move forward).
-# define A 97            //  for the 'A' key (move left).
 # define S 115           //  for the 'S' key (move backward).
 # define D 100           //  for the 'D' key (move right).
+# define A 97            //  for the 'A' key (move left).
 # define RIGHT 65363     //  for the right arrow key (rotate right).
 # define LEFT 65361      //  for the left arrow key (rotate left).
 # define CLOSE 65307     //  for the 'Esc' key (close the game).
@@ -37,8 +37,7 @@
 # define IMG_SIZE_X 14 // Width of texture images
 # define IMG_SIZE_Y 4  // Height of texture images
 
-# define ANGLE 1.5
-// Angle increment for player rotation (in degrees).
+# define ANGLE 1.5 // Angle increment for player rotation (in degrees).
 # define WALL_COLOR 0x61F5B5 // Color for rendering walls (in hexadecimal).
 # define DIR_COLOR 0xFF0000  // Color for rendering the player's direction
 # define BLACK 0x000000      // Color for rendering black
@@ -47,10 +46,10 @@
 // Field of View (angle in degrees visible to the player).
 # define SPEED_DIV 10 // controls how fast the player moves).
 
-# define N_INDEX 0 // Index for the north wall texture.
-# define S_INDEX 1 // Index for the south wall texture.
-# define W_INDEX 2 // Index for the west wall texture.
-# define E_INDEX 3 // Index for the east wall texture.
+# define NORTH_INDEX 0 // Index for the north wall texture.
+# define SOUTH_INDEX 1 // Index for the south wall texture.
+# define WEST_INDEX 2 // Index for the west wall texture.
+# define EAST_INDEX 3 // Index for the east wall texture.
 
 # define RIGHT_ARROW 0 // Flag for right arrow key (rotate right).
 # define LEFT_ARROW 1  // Flag for left arrow key (rotate left).
@@ -92,7 +91,7 @@ typedef struct s_ray
 	float		vert_distance;
 	int			side_flag;
 	int			pixel_color;
-	int			texture_idx;
+	int			texture_index;
 	float		height;
 }				t_ray;
 
