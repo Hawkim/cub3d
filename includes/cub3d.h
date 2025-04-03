@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 17:03:31 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/04/02 18:36:42 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/04/03 15:42:57 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,8 +148,9 @@ typedef struct s_config
 
 void			free_memory(void *mlx, t_texture *my_textures);
 void			start(t_config *parsed_data);
-void			intitialize_keys(t_maindata *data);
-void			draw(t_maindata *data);
+void			initialize_keys(t_maindata *data);
+// void			draw(t_maindata *data);
+char			*trim_whitespace(char *str);
 void			horiz_distance(t_maindata *data, t_ray *ray, float rayangle);
 float			get_distance(t_maindata *data, float x, float y);
 void			vert_distance(t_maindata *data, t_ray *ray, float rayangle);
@@ -183,5 +184,6 @@ void			ft_access(char *file, t_config *scene_data, char *line, int i);
 void			map_parser(char **map, t_config *scene_data);
 void			check_prev_members(t_config *scene_data, char *line);
 int				open_cub_file(char *file);
+char			*trim_whitespace(char *str);
 
 #endif

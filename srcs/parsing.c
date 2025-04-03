@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:52:51 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/04/02 17:20:16 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/04/03 15:32:16 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ static void	parse_line(char *line, t_config *data, int *map_started)
 		*map_started = 1;
 		return ;
 	}
+	line = trim_whitespace(line);
 	words = ft_split(line, ' ');
 	if (!words)
 		error_handler("no memory", NULL, line, data);

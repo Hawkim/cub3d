@@ -6,7 +6,7 @@
 /*   By: nal-haki <nal-haki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:52:22 by nal-haki          #+#    #+#             */
-/*   Updated: 2025/04/02 17:20:16 by nal-haki         ###   ########.fr       */
+/*   Updated: 2025/04/03 15:38:32 by nal-haki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,12 @@ int	strings_len(char **words)
 	if (!words)
 		return (0);
 	while (words[len])
-		len++;
+	{
+		if (words[len][0] != '\0')
+			len++;
+		else
+			words[len] = NULL;
+	}
 	return (len);
 }
 

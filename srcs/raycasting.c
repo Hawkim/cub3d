@@ -17,17 +17,17 @@ static void	height_and_texture(t_maindata *data, t_ray *ray)
 	if (ray->side_flag == 1)
 	{
 		if (ray->rayangle >= 180)
-			ray->texture_index = SOUTH_INDEX;
-		else
 			ray->texture_index = NORTH_INDEX;
+		else
+			ray->texture_index = SOUTH_INDEX;
 	}
 	else
 	{
 		if ((ray->rayangle >= 0 && ray->rayangle <= 90)
 			|| ray->rayangle >= 270)
-			ray->texture_index = WEST_INDEX;
-		else
 			ray->texture_index = EAST_INDEX;
+		else
+			ray->texture_index = WEST_INDEX;
 	}
 	ray->height = ((float)BLOCK_SIZE / ray->distance)
 		* data->player.projection_plane_dist;

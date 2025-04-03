@@ -12,7 +12,7 @@
 
 #include "../includes/cub3d.h"
 
-void	intitialize_keys(t_maindata *data)
+void	initialize_keys(t_maindata *data)
 {
 	data->keys[RIGHT_ARROW] = false;
 	data->keys[LEFT_ARROW] = false;

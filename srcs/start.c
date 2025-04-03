@@ -74,7 +74,7 @@ void	start(t_config *parsed_data)
 	initialize_textures(&data, parsed_data);
 	parsed_data->map = NULL;
 	free_parsed_data(parsed_data);
-	intitialize_keys(&data);
+	initialize_keys(&data);
 	first_view(&data);
 	mlx_hook(data.win, 17, 1L << 2, close_window, &data);
 	mlx_hook(data.win, 2, 1L << 0, ft_press_key, &data);
